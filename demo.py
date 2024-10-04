@@ -52,12 +52,19 @@ def my_forge(cur_inp):
     video_forging.infer_once(inp)
 
 
-@app.route('/api/video-forge/sample', methods=['POST'])
+@app.route('/video-forge/sample', methods=['POST'])
 def video_forge():
     try:
-        person = request.get_json().get('person', None)
-        bg = request.get_json().get('background', None)
-        aud = request.get_json().get('audio', None)
+        # person = request.get_json().get('person', None)
+        # bg = request.get_json().get('background', None)
+        # aud = request.get_json().get('audio', None)
+        person = request.form.get('person', None)
+        bg = request.form.get('background', None)
+        aud = request.form.get('audio', None)
+        print('person:', person)
+        print('background:', bg)
+        print('audio:', aud)
+
         # timestamp = datetime.now().strftime("%Y%m%d_%H%M%S") # 用于唯一保存每次用户上传的文件
         
         # 判断人物是否为空&是否在指定列表内
@@ -135,6 +142,8 @@ def video_forge():
         # video_base64 = base64.b64encode(video_byte_data).decode('utf-8')
 
         video_path = os.path.join(root_path, video_name)
+        print('video_path', video_path)
+
         with open(video_path, 'rb') as video_file:
             video_data = video_file.read()
 
@@ -148,5 +157,6 @@ def video_forge():
 
 
 if __name__ == '__main__':
-
-    app.run(host="127.0.0.1", port=6006)
+    
+    # app.run(host="127.0.0.1", port=6006)
+    app.run(host="127.0.0.1", port=5002)
