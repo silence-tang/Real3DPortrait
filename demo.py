@@ -103,6 +103,13 @@ def video_forge():
         # image_tmp = Image.open(BytesIO(base64.b64decode(target)))
         # image_tmp.save(tgt)
 
+        # 根据post过来的base64解码出用户上传的音频并保存在服务器端
+        # tgt = os.path.join(folder_path, f"{timestamp}_aud.wav")
+        # audio_data = base64.b64decode(target)
+        # with open(tgt, 'wb') as f:
+        #     f.write(audio_data)
+
+
         # output_tmp = os.path.join(folder_path, f"{timestamp}_op.mp4")
         # output_real = os.path.join(folder_path, f"{timestamp}_op.jpg")
 
